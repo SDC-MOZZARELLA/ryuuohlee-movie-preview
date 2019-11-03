@@ -39,7 +39,7 @@
     "jest-cli": "^24.9.0",
     "jest-enzyme": "^7.1.1",
     "lorem-ipsum": "^2.0.3",
-    "mongoose": "^5.7.4",
+    "mongoose": "^5.7.5",
     "mongoose-auto-increment": "^5.0.1",
     "mongoose-unique-validator": "^2.0.3",
     "nock": "^11.4.0",
