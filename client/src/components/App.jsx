@@ -53,7 +53,7 @@ class App extends React.Component {
 
     try {
       let response = await axios.get(
-        "http://ec2-18-223-155-146.us-east-2.compute.amazonaws.com:3003/api/movie",
+        "http://localhost:3003/api/movie",
         {
           params: {
             title: title
