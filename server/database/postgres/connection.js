@@ -1,5 +1,5 @@
-//requirements
-require("dotenv").config();
+// requirements
+require('dotenv').config();
 const Pool = require('pg');
 
 const pool = new Pool({
@@ -7,7 +7,20 @@ const pool = new Pool({
   host: process.env.POSTGRES_HOST,
   database: process.env.POSTGRES_DATABASE,
   password: process.env.POSTGRES_PASSWORD,
-  port: process.env.POSTGRES_PORT
+  port: process.env.POSTGRES_PORT,
+});
+
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('error acquiring client', err.stack);
+  }
+  client.query('SELECT NOW()', (err, result) => {
+    release();
+    if (err) {
+      return console.error('Error executing query', err.stack);
+    }
+    console.log(result.rows);
+  });
 });
 
 module.exports = pool;
