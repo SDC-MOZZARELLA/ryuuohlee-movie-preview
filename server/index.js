@@ -13,7 +13,7 @@ app.use(express.static("client/dist/"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// routes
+// routes for mongoDB
 app.get('/api/movie', (req, res) => {
   controller.movie.get(req, res, (err, data) => {
     if (err) {
