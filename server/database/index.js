@@ -1,15 +1,15 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const autoIncrement = require("mongoose-auto-increment");
+require('dotenv').config();
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
 });
 autoIncrement.initialize(mongoose);
 
-let previewSchema = mongoose.Schema({
+const previewSchema = mongoose.Schema({
   title: String,
   criticConsensus: String,
   potatoMeter: {
@@ -17,24 +17,35 @@ let previewSchema = mongoose.Schema({
     averageRating: Number,
     totalCount: Number,
     fresh: Number,
-    spoiled: Number
+    spoiled: Number,
   },
   audienceScore: {
     percentage: Number,
     averageRating: Number,
-    totalCount: Number
+    totalCount: Number,
   },
   videoUrl: String,
   imgUrl: String,
-  videoScene: String
+  videoScene: String,
 });
 
-previewSchema.plugin(autoIncrement.plugin, "Preview");
+previewSchema.plugin(autoIncrement.plugin, 'Preview');
 
-let Preview = mongoose.model("Preview", previewSchema);
+const Preview = mongoose.model('Preview', previewSchema);
 
-let savePreview = data => {
-  let moviePreview = new Preview({
+const getPreview = (data) => {
+  const previewId = Number(data._id);
+  Preview.find({ _id: previewId },
+    (err, doc) => {
+      if (err) {
+        return console.log('get error');
+      }
+      console.log(doc);
+    });
+};
+
+const savePreview = (data) => {
+  const moviePreview = new Preview({
     title: data.title,
     criticConsensus: data.criticConsensus,
     potatoMeter: {
@@ -42,16 +53,16 @@ let savePreview = data => {
       spoiled: data.potatoMeter.spoiled,
       percentage: data.potatoMeter.percentage,
       averageRating: data.potatoMeter.averageRating,
-      totalCount: data.potatoMeter.totalCount
+      totalCount: data.potatoMeter.totalCount,
     },
     audienceScore: {
       totalCount: data.audienceScore.totalCount,
       percentage: data.audienceScore.percentage,
-      averageRating: data.audienceScore.averageRating
+      averageRating: data.audienceScore.averageRating,
     },
     videoUrl: data.videoUrl,
     imgUrl: data.imgUrl,
-    videoScene: data.videoScene
+    videoScene: data.videoScene,
   });
 
   moviePreview.save((err, moviePreview) => {
@@ -62,8 +73,8 @@ let savePreview = data => {
   });
 };
 
-let modifyPreview = data => {
-  let previewId = Number(data._id);
+const modifyPreview = (data) => {
+  const previewId = Number(data._id);
   Preview.findOneAndUpdate(
     { _id: previewId },
     { $set: { title: data.title } },
@@ -73,12 +84,12 @@ let modifyPreview = data => {
         return console.log('modify error', err);
       }
       console.log('updated');
-    }
+    },
   );
 };
 
-const deletePreview = data => {
-  let previewId = Number(data._id);
+const deletePreview = (data) => {
+  const previewId = Number(data._id);
   Preview.deleteOne({ _id: previewId },
     (err, doc) => {
       if (err) {
@@ -122,7 +133,8 @@ const deletePreview = data => {
 
 module.exports = {
   Preview,
+  getPreview,
   savePreview,
   modifyPreview,
-  deletePreview
+  deletePreview,
 };
