@@ -77,6 +77,17 @@ let modifyPreview = data => {
   );
 };
 
+const deletePreview = data => {
+  let previewId = Number(data._id);
+  Preview.deleteOne({ _id: previewId },
+    (err, doc) => {
+      if (err) {
+        return console.log('delete error', err);
+      }
+      console.log('deleted');
+    });
+};
+
 // let save = movies => {
 //   movies.forEach(movie => {
 //     let moviePreview = new Preview({
@@ -114,4 +125,4 @@ module.exports = {
   savePreview,
   modifyPreview,
   deletePreview
-}
+};
