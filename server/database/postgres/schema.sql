@@ -27,3 +27,5 @@ CREATE TABLE potatoeMeter (
   fresh INT,
   spoiled INT
 );
+
+-- use psql postgres < schema.sql
