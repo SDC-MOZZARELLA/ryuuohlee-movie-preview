@@ -4,7 +4,7 @@ CREATE DATABASE movies;
 \c movies;
 
 CREATE TABLE moviePreviews (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id INT PRIMARY KEY NOT NULL,
   title VARCHAR(30) UNIQUE NOT NULL,
   criticConsensus VARCHAR(255) NOT NULL,
   videoUrl VARCHAR(60) NOT NULL,
@@ -13,14 +13,16 @@ CREATE TABLE moviePreviews (
 );
 
 CREATE TABLE audienceScore (
-  id SERIAL,
+  id INT PRIMARY KEY,
+  previewId INT REFERENCES moviePreviews(id),
   percent INT,
   averageRating INT,
   totalCount INT
 );
 
 CREATE TABLE potatoeMeter (
-  id SERIAL,
+  id INT PRIMARY KEY,
+  previewId INT REFERENCES moviePreviews(id),
   percent INT,
   averageRating INT,
   totalCount INT,
