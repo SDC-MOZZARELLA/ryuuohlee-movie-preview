@@ -1,3 +1,6 @@
 node_modules
 bundle.js
 .env
+audienceScores.csv
+moviePreviews.csv
+potatoMeter.csv
