@@ -1,4 +1,4 @@
-const db = require('../database/index.js');
+const db = require('../database/mongo/index.js');
 
 module.exports = {
   movie: {

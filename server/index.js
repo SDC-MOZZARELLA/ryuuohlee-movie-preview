@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require("path");
 // const router = require("./routes/routes.js");
 const controller = require('./routes/controllers.js');
-const db = require('./database/index.js');
-const path = require("path");
+const db = require('./database/mongo/index.js');
+
 
 
 // middleware
