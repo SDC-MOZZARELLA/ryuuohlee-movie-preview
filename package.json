@@ -27,6 +27,7 @@
     "autoprefixer": "^9.6.4",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "cassandra-driver": "^4.3.1",
     "cors": "^2.8.5",
     "csv-write-stream": "^2.0.0",
     "dotenv": "^8.2.0",
