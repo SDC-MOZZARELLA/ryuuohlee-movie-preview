@@ -31,4 +31,10 @@ CREATE TABLE potatoeMeter (
   spoiled INT
 );
 
+COPY movies.moviePreviews FROM '/Users/jeffreylee/hackreactor/Immersive/movie-preview/server/database/seed/moviePreviews.csv' WITH HEADER=TRUE;
+
+COPY movies.audienceScore FROM '/Users/jeffreylee/hackreactor/Immersive/movie-preview/server/database/seed/audienceScores.csv' WITH HEADER=TRUE;
+
+COPY movies.potatoeMeter FROM '/Users/jeffreylee/hackreactor/Immersive/movie-preview/server/database/seed/potatoMeter.csv' WITH HEADER=TRUE;
+
 -- use cqlsh < keyspace.cql
