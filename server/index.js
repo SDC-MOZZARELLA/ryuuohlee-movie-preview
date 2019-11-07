@@ -15,12 +15,14 @@ app.use(express.json());
 
 // routes for mongoDB
 app.get('/api/movie', (req, res) => {
-  controller.movie.get(req, res, (err, data) => {
-    if (err) {
-      console.log('route err');
-    }
-    res.send(data.status(200));
-  });
+  db.getPreview(req.body);
+  res.sendStatus(200);
+  // controller.movie.get(req, res, (err, data) => {
+  //   if (err) {
+  //     console.log('route err');
+  //   }
+  //   res.send(data.status(200));
+  // });
 });
 
 app.post('/api/movie', (req, res) => {
