@@ -1,11 +1,11 @@
 const express = require("express");
+
 const app = express();
 const cors = require("cors");
+const path = require("path");
 // const router = require("./routes/routes.js");
 const controller = require('./routes/controllers.js');
-const db = require('./database/index.js');
-const path = require("path");
-
+const db = require('./database/mongo/index.js');
 
 // middleware
 app.use(cors());
@@ -13,7 +13,7 @@ app.use(express.static("client/dist/"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// routes
+// routes for mongoDB
 app.get('/api/movie', (req, res) => {
   db.getPreview(req.body);
   res.sendStatus(200);
