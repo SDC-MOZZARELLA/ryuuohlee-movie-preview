@@ -1,4 +1,4 @@
--- DROP KEYSPACE IF EXISTS movies;
+DROP KEYSPACE IF EXISTS movies;
 CREATE KEYSPACE movies
 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 

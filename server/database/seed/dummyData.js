@@ -1,6 +1,5 @@
 const randomData = require('faker');
 const fs = require('fs');
-const csvWriter = require('csv-write-stream');
 
 // Creating CSV file for the moviePreviews records
 const writePreviews = fs.createWriteStream('moviePreviews.csv');
@@ -16,6 +15,18 @@ writePotatoMeters.write('id,previewId,percent,averageRating,totalCount,fresh,spo
 
 // Dummy data for the 10mil records for moviePreviews
 function writeTenMilPreviews(writer, encoding, callback) {
+  // Image link generator
+  let randomImg = [];
+
+  function imgGen(amount) {
+    for (let i = 0; i < amount; i++) {
+      randomImg.push(randomData.image.imgUrl);
+    }
+    return randomImg;
+  }
+
+  imgGen(1000);
+
   let i = 10000000;
   let id = 0;
   function write() {
@@ -27,7 +38,7 @@ function writeTenMilPreviews(writer, encoding, callback) {
       const criticConsensus = randomData.lorem.paragraph();
       const videoUrl = randomData.image.imageUrl();
       const imgUrl = randomData.image.imageUrl();
-      const videoScene = randomData.image.imageUrl();
+      const videoScene = randomImg[Math.floor(Math.random() * 1000)];
       const data = `${id},${title},${criticConsensus},${videoUrl},${imgUrl},${videoScene}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);

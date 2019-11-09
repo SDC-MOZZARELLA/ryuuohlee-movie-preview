@@ -16,7 +16,7 @@ CREATE TABLE audienceScore (
   id INT PRIMARY KEY,
   previewId INT REFERENCES moviePreviews(id),
   percent INT,
-  averageRating INT,
+  averageRating float(2),
   totalCount INT
 );
 
@@ -24,7 +24,7 @@ CREATE TABLE potatoeMeter (
   id INT PRIMARY KEY,
   previewId INT REFERENCES moviePreviews(id),
   percent INT,
-  averageRating INT,
+  averageRating float,
   totalCount INT,
   fresh INT,
   spoiled INT

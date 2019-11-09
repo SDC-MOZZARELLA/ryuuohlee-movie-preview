@@ -15,4 +15,9 @@ pool.connect()
   .catch(e => console.log(e))
   .finally(() => pool.end());
 
+// routes
+const getPreviews = (req, res) => {
+  pool.query('SELECT')
+}
+
 module.exports = pool;
