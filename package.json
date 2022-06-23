@@ -73,7 +73,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "file-loader": "^4.2.0",
-    "jsdom": "15.2.0",
+    "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "node-sass": "^4.12.0",
     "npm-reinstall": "^3.1.0",
